@@ -1,12 +1,12 @@
 insert into <tabela>(campos) values (valores)
 
-insert into Teatros(e-mail, senha, CNPJ, nome, cidade) values ("teatrostop@email.com", "xdrghuji", "23.765.345/2019-04", "Teatro São Carlos", "São Carlos")
-insert into Teatros(e-mail, senha, CNPJ, nome, cidade) values ("roberto@email.com", "huji", "28.715.865/2019-04", "Teatro São Paulo", "São Paulo")
-insert into Teatros(e-mail, senha, CNPJ, nome, cidade) values ("rogério@email.com", "uygfvnçl", "68.845.578/2018-04", "Teatro Municipal de Campinas", "Campinas")
+insert into Teatros(email, senha, CNPJ, nome, cidade) values ("teatrostop@email.com", "xdrghuji", "23.765.345/2019-04", "Teatro São Carlos", "São Carlos")
+insert into Teatros(email, senha, CNPJ, nome, cidade) values ("roberto@email.com", "huji", "28.715.865/2019-04", "Teatro São Paulo", "São Paulo")
+insert into Teatros(email, senha, CNPJ, nome, cidade) values ("rogério@email.com", "uygfvnçl", "68.845.578/2018-04", "Teatro Municipal de Campinas", "Campinas")
 
-insert into Sites(e-mail, senha, URL, nome, telefone) values ("vendasbco@email.com", "tfgbhnii", "www.vendasbco.com.br", "vendasbco", "1623456789")
-insert into Sites(e-mail, senha, URL, nome, telefone) values ("vendasbcc@email.com", "tfnii", "www.vendasbcc.com.br", "vendasbcc", "1698765432")
-insert into Sites(e-mail, senha, URL, nome, telefone) values ("vendasdelano@email.com", "professordeweb", "www.vendasdelano.com.br", "vendasdelano", "1639573659")
+insert into Sites(email, senha, URL, nome, telefone) values ("vendasbco@email.com", "tfgbhnii", "www.vendasbco.com.br", "vendasbco", "1623456789")
+insert into Sites(email, senha, URL, nome, telefone) values ("vendasbcc@email.com", "tfnii", "www.vendasbcc.com.br", "vendasbcc", "1698765432")
+insert into Sites(email, senha, URL, nome, telefone) values ("vendasdelano@email.com", "professordeweb", "www.vendasdelano.com.br", "vendasdelano", "1639573659")
 
 insert into Promocoes(URL, CNPJ, nome, preço, dia/horário) values ("www.vendasbco.com", "23.765.345/2019-04", "Fantasma da Ópera", 15,00, "16/04/2019-20:00")
 insert into Promocoes(URL, CNPJ, nome, preço, dia/horário) values ("www.vendasbcc.com", "28.715.865/2019-04", "Os Cavaleiros do DM", 5,00, "16/04/2019-21:00")
