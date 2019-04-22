@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/")
+@WebServlet(urlPatterns = {"/teatros", "/teatros/cadastro", "/teatros/insercao", "/teatros/remocao", "/teatros/edicao", "/teatros/atualizacao"})
 public class TeatroController extends HttpServlet {
     private TeatroDAO dao;
 
@@ -27,21 +27,22 @@ public class TeatroController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         String action = request.getServletPath();
+        
         try {
             switch (action) {
-                case "/cadastro":
+                case "/teatros/cadastro":
                     apresentaFormCadastro(request, response);
                     break;
-                case "/insercao":
+                case "/teatros/insercao":
                     insere(request, response);
                     break;
-                case "/remocao":
+                case "/teatros/remocao":
                     remove(request, response);
                     break;
-                case "/edicao":
+                case "/teatros/edicao":
                     apresentaFormEdicao(request, response);
                     break;
-                case "/atualizacao":
+                case "/teatros/atualizacao":
                     atualize(request, response);
                     break;
                 default:
@@ -56,19 +57,19 @@ public class TeatroController extends HttpServlet {
     private void lista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Teatro> listaTeatros = dao.getAll();
         request.setAttribute("listaTeatros", listaTeatros);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("teatro/lista.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/teatro/lista.jsp");
         dispatcher.forward(request, response);
     }
     
     private void apresentaFormCadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("teatro/formulario.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/teatro/formulario.jsp");
         dispatcher.forward(request, response);
     }
     
     private void apresentaFormEdicao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String cnpj = request.getParameter("cnpj");
         Teatro teatro = dao.get(cnpj);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("teatro/formulario.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/teatro/formulario.jsp");
         request.setAttribute("teatro", teatro);
         dispatcher.forward(request, response);
     }
@@ -82,7 +83,7 @@ public class TeatroController extends HttpServlet {
         String senha = request.getParameter("senha");
         Teatro teatro = new Teatro(nome, cidade, cnpj, email, senha);
         dao.insert(teatro);
-        response.sendRedirect("lista");
+        response.sendRedirect("../teatros");
     }
     
     private void atualize(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -94,13 +95,13 @@ public class TeatroController extends HttpServlet {
         String senha = request.getParameter("senha");
         Teatro teatro = new Teatro(nome, cidade, cnpj, email, senha);
         dao.update(teatro);
-        response.sendRedirect("lista");
+        response.sendRedirect("../teatros");
     }
     
     private void remove(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String cnpj = request.getParameter("cnpj");
         Teatro teatro = new Teatro(cnpj);
         dao.delete(teatro);
-        response.sendRedirect("lista");
+        response.sendRedirect("../teatros");
     }
 }

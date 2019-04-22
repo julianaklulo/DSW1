@@ -8,8 +8,7 @@
         <center>
             <h1>Gerenciamento de Teatros</h1>
             <h2>
-                <a href="cadastro">Adicione Novo Teatro</a>
-                <a href="lista">Lista de Teatros</a>
+                <a href="teatros/cadastro">Adicione Novo Teatro</a>
             </h2>
         </center>
         <div align="center">
@@ -23,7 +22,7 @@
                     <th>Senha</th>
                     <th>Acões</th>
                 </tr>
-                <c:forEach var="site" items="${listaTeatros}">
+                <c:forEach var="teatro" items="${listaTeatros}">
                     <tr>
                         <td><c:out value="${teatro.cnpj}" /></td>
                         <td><c:out value="${teatro.nome}" /></td>
@@ -31,8 +30,8 @@
                         <td><c:out value="${teatro.email}" /></td> 
                         <td><c:out value="${teatro.senha}" /></td>
                         <td>
-                            <a href="edicao?url=<c:out value='${teatro.cnpj}' />">Edição</a>
-                            <a href="remocao?url=<c:out value='${teatro.cnpj}' />"onclick="return confirm('Tem certeza de que deseja excluir este item?');">Remoção</a>
+                            <a href="teatros/edicao?cnpj=<c:out value='${teatro.cnpj}' />">Edição</a>
+                            <a href="teatros/remocao?cnpj=<c:out value='${teatro.cnpj}' />"onclick="return confirm('Tem certeza de que deseja excluir este item?');">Remoção</a>
                         </td>
                     </tr>
                 </c:forEach>

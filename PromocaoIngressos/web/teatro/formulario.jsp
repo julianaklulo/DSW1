@@ -7,10 +7,6 @@
     <body>
         <center>
             <h1>Gerenciamento de Teatros</h1>
-            <h2>
-                <a href="cadastro">Adicione Novo Teatro</a>
-                <a href="lista">Lista de Teatros</a>
-            </h2>
         </center>
         <div align="center">
             <c:if test="${teatro != null}">
@@ -60,7 +56,7 @@
                 <tr>
                     <th>Senha: </th>
                     <td>
-                        <input type="text" name="senha" size="100" value"<c:out value='${teatro.senha}' />"/>
+                        <input type="text" name="senha" size="100" value="<c:out value='${teatro.senha}' />"/>
                     </td>
                 </tr>
                 <tr>
