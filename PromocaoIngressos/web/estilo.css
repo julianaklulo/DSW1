@@ -1,0 +1,42 @@
+body {
+    background-color: lightyellow;
+}
+
+h1 {
+    font-style: italic;
+}
+
+p {
+    color: maroon;
+}
+
+a {
+    color: black;
+    font-variant: small-caps;
+    font-size: 1.5em;
+}
+
+table {
+    border-collapse:collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th {
+    background-color:green;
+    color:yellow;
+}
+
+td {
+    text-align: center;
+}
+
+td.esquerda {
+    text-align: left;
+}
+
+ul.erro {
+    color: red;
+}
