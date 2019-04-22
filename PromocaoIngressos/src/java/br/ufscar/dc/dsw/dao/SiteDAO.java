@@ -1,7 +1,6 @@
 package br.ufscar.dc.dsw.dao;
 import br.ufscar.dc.dsw.model.Site;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,19 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SiteDAO {
-    public SiteDAO() {
-        try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    
-    protected Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:derby://localhost:1527/SiteVenda", "root", "root");
-    }
-    
+public class SiteDAO extends GenericDAO {
     public void insert(Site site) {
         String sql = "INSERT INTO sites (nome, telefone, url, email, senha) VALUES (?, ?, ?, ?, ?)";
         try {
@@ -111,7 +98,7 @@ public class SiteDAO {
                 String telefone = resultSet.getString("telefone");
                 String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");
-                site = new Site(url, nome, telefone, email, senha);
+                site = new Site(nome, telefone, url, email, senha);
             }
             resultSet.close();
             statement.close();
