@@ -7,10 +7,6 @@
     <body>
         <center>
             <h1>Gerenciamento de Sites</h1>
-            <h2>
-                <a href="cadastro">Adicione Novo Site</a>
-                <a href="lista">Lista de Sites</a>
-            </h2>
         </center>
         <div align="center">
             <c:if test="${site != null}">
@@ -60,7 +56,7 @@
                 <tr>
                     <th>Senha: </th>
                     <td>
-                        <input type="text" name="senha" size="100" value"<c:out value='${site.senha}' />"/>
+                        <input type="text" name="senha" size="100" value="<c:out value='${site.senha}' />"/>
                     </td>
                 </tr>
                 <tr>

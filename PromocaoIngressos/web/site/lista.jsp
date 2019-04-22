@@ -8,8 +8,7 @@
         <center>
             <h1>Gerenciamento de Sites</h1>
             <h2>
-                <a href="cadastro">Adicione Novo Site</a>
-                <a href="lista">Lista de Sites</a>
+                <a href="sites/cadastro">Adicione Novo Site</a>
             </h2>
         </center>
         <div align="center">
@@ -31,8 +30,8 @@
                         <td><c:out value="${site.email}" /></td> 
                         <td><c:out value="${site.senha}" /></td>
                         <td>
-                            <a href="edicao?url=<c:out value='${site.url}' />">Edição</a>
-                            <a href="remocao?url=<c:out value='${site.url}' />"onclick="return confirm('Tem certeza de que deseja excluir este item?');">Remoção</a>
+                            <a href="sites/edicao?url=<c:out value='${site.url}' />">Edição</a>
+                            <a href="sites/remocao?url=<c:out value='${site.url}' />"onclick="return confirm('Tem certeza de que deseja excluir este item?');">Remoção</a>
                         </td>
                     </tr>
                 </c:forEach>
