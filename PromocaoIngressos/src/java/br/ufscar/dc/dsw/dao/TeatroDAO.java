@@ -52,6 +52,32 @@ public class TeatroDAO extends GenericDAO {
         return listaTeatros;
     }
     
+    public List<Teatro> getTeatroByCidade(String c) {
+        List<Teatro> listaTeatrosCidade = new ArrayList<>();
+        String sql = "SELECT * FROM teatros WHERE cidade = ?";
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, c);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String nome = resultSet.getString("nome");
+                String cidade = resultSet.getString("cidade");
+                String cnpj = resultSet.getString("cnpj");
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                Teatro teatro = new Teatro(nome, cidade, cnpj, email, senha);
+                listaTeatrosCidade.add(teatro);
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaTeatrosCidade;
+    }
+    
     public void delete(Teatro teatro) {
         String sql = "DELETE FROM teatros where cnpj = ?";
         try {

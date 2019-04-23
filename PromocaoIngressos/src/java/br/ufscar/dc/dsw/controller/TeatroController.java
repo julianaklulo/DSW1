@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/teatros", "/teatros/cadastro", "/teatros/insercao", "/teatros/remocao", "/teatros/edicao", "/teatros/atualizacao"})
+@WebServlet(urlPatterns = {"/teatros", "/teatros/todos", "/teatros/cidade", "/teatros/cadastro", "/teatros/insercao", "/teatros/remocao", "/teatros/edicao", "/teatros/atualizacao"})
 public class TeatroController extends HttpServlet {
     private TeatroDAO dao;
 
@@ -45,6 +45,12 @@ public class TeatroController extends HttpServlet {
                 case "/teatros/atualizacao":
                     atualize(request, response);
                     break;
+                case "/teatros/todos":
+                    listaTodosTeatros(request, response);
+                    break;
+                case "/teatros/cidade":
+                    listaPorCidade(request, response);
+                    break;
                 default:
                     lista(request, response);
                     break;
@@ -60,7 +66,21 @@ public class TeatroController extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/teatro/lista.jsp");
         dispatcher.forward(request, response);
     }
-    
+        private void listaTodosTeatros(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Teatro> listaTeatros = dao.getAll();
+        request.setAttribute("listaTeatros", listaTeatros);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/teatro/listaTodosTeatros.jsp");
+        dispatcher.forward(request, response);
+    }
+        
+    private void listaPorCidade(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String cidade = "São Carlos";
+        List<Teatro> listaTeatros = dao.getTeatroByCidade(cidade);
+        request.setAttribute("listaTeatros", listaTeatros);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/teatro/listaPorCidade.jsp");
+        dispatcher.forward(request, response);
+    }
+        
     private void apresentaFormCadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/teatro/formulario.jsp");
         dispatcher.forward(request, response);
