@@ -52,6 +52,26 @@ public class TeatroDAO extends GenericDAO {
         return listaTeatros;
     }
     
+    public List<String> cidades() {
+        List<String> listaCidades = new ArrayList<>();
+        String sql = "SELECT DISTINCT cidade FROM teatros";
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String cidade = resultSet.getString("cidade");
+                listaCidades.add(cidade);
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaCidades;
+    }
+    
     public List<Teatro> getTeatroByCidade(String c) {
         List<Teatro> listaTeatrosCidade = new ArrayList<>();
         String sql = "SELECT * FROM teatros WHERE cidade = ?";
