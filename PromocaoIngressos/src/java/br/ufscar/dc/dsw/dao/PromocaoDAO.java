@@ -140,23 +140,16 @@ public class PromocaoDAO extends GenericDAO {
         return listaPromocoes;
     }
     
-    public List<Promocao> getAllPromocaoSite(String u) {
-        List<Promocao> listaPromocaoSite = new ArrayList<>();
-        String sql = "SELECT * FROM promocoes WHERE url = ?";
+    public List<String> sites() {
+        List<String> listaSites = new ArrayList<>();
+        String sql = "SELECT DISTINCT url FROM promocoes";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, u);
             ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) { 
-                Integer id = resultSet.getInt("id");
-                String url = resultSet.getString("url");
-                String cnpj = resultSet.getString("cnpj");
-                String nomePeca = resultSet.getString("nome_peça");
-                Float preco = resultSet.getFloat("preco");
-                String dataHora = resultSet.getString("data_hora");
-                Promocao promocao = new Promocao(id, url, cnpj, nomePeca, preco, dataHora);
-                listaPromocaoSite.add(promocao);
+            while (resultSet.next()) {
+                String site = resultSet.getString("url");
+                listaSites.add(site);
             }
             resultSet.close();
             statement.close();
@@ -164,7 +157,34 @@ public class PromocaoDAO extends GenericDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return listaPromocaoSite;
+        return listaSites;
+    }
+    
+        public List<Promocao> getPromocaoBySite(String u) {
+        List<Promocao> listaPromocoesSite = new ArrayList<>();
+        String sql = "SELECT * FROM promocoes WHERE url = ?";
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, u);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Integer id = resultSet.getInt("id");
+                String url = resultSet.getString("url");
+                String cnpj = resultSet.getString("cnpj");
+                String nomePeca = resultSet.getString("nome_peça");
+                Float preco = resultSet.getFloat("preco");
+                String dataHora = resultSet.getString("data_hora");
+                Promocao promocao = new Promocao(id, url, cnpj, nomePeca, preco, dataHora);
+                listaPromocoesSite.add(promocao);
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaPromocoesSite;
     }
 }
     

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/promocoes", "/promocoes/cadastro", "/promocoes/insercao", "/promocoes/remocao", "/promocoes/edicao", "/promocoes/atualizacao", "/promocoes/teatro", "/promocoes/site"})
+@WebServlet(urlPatterns = {"/promocoes", "/promocoes/escolheSite", "/promocoes/listaPorSite", "/promocoes/cadastro", "/promocoes/insercao", "/promocoes/remocao", "/promocoes/edicao", "/promocoes/atualizacao", "/promocoes/teatro", "/promocoes/site"})
 public class PromocaoController extends HttpServlet {
     private PromocaoDAO dao;
 
@@ -44,10 +44,10 @@ public class PromocaoController extends HttpServlet {
                 case "/promocoes/atualizacao":
                     atualize(request, response);
                     break;
-               case "/promocoes/teatro":
-                    listaPorTeatro(request, response);
+                case "/promocoes/escolheSite":
+                    escolheSite(request, response);
                     break;
-                case "/promocoes/site":
+                case "/promocoes/listaPorSite":
                     listaPorSite(request, response);
                     break;
                 default:
@@ -119,9 +119,16 @@ public class PromocaoController extends HttpServlet {
         dispatcher.forward(request, response);
     }
     
+    private void escolheSite(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<String> listaSites = dao.sites();
+        request.setAttribute("sites", listaSites);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/promocao/escolheSite.jsp");
+        dispatcher.forward(request, response);
+    }
+    
     private void listaPorSite(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "www.vendasbco.com.br";
-        List<Promocao> listaPromocoes = dao.getAllPromocaoSite(url);
+        String site = request.getParameter("site");  
+        List<Promocao> listaPromocoes = dao.getPromocaoBySite(site);
         request.setAttribute("listaPromocoes", listaPromocoes);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/promocao/listaPorSite.jsp");
         dispatcher.forward(request, response);
