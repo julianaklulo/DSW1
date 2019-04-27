@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/promocoes", "/promocoes/escolheSite", "/promocoes/listaPorSite", "/promocoes/cadastro", "/promocoes/insercao", "/promocoes/remocao", "/promocoes/edicao", "/promocoes/atualizacao", "/promocoes/teatro", "/promocoes/site"})
+@WebServlet(urlPatterns = {"/promocoes", "/promocoes/escolheSite", "/promocoes/listaPorSite", "/promocoes/escolheTeatro", "/promocoes/listaPorTeatro", "/promocoes/cadastro", "/promocoes/insercao", "/promocoes/remocao", "/promocoes/edicao", "/promocoes/atualizacao"})
 public class PromocaoController extends HttpServlet {
     private PromocaoDAO dao;
 
@@ -49,6 +49,12 @@ public class PromocaoController extends HttpServlet {
                     break;
                 case "/promocoes/listaPorSite":
                     listaPorSite(request, response);
+                    break;
+                case "/promocoes/escolheTeatro":
+                    escolheTeatro(request, response);
+                    break;
+                case "/promocoes/listaPorTeatro":
+                    listaPorTeatro(request, response);
                     break;
                 default:
                     lista(request, response);
@@ -111,14 +117,6 @@ public class PromocaoController extends HttpServlet {
         response.sendRedirect("../promocoes");
     }
     
-    private void listaPorTeatro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String cnpj = "23.765.345/2019-04";
-        List<Promocao> listaPromocoes = dao.getAllPromocaoTeatro(cnpj);
-        request.setAttribute("listaPromocoes", listaPromocoes);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/promocao/listaPorTeatro.jsp");
-        dispatcher.forward(request, response);
-    }
-    
     private void escolheSite(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<String> listaSites = dao.sites();
         request.setAttribute("sites", listaSites);
@@ -131,6 +129,21 @@ public class PromocaoController extends HttpServlet {
         List<Promocao> listaPromocoes = dao.getPromocaoBySite(site);
         request.setAttribute("listaPromocoes", listaPromocoes);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/promocao/listaPorSite.jsp");
+        dispatcher.forward(request, response);
+    }
+    
+    private void escolheTeatro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<String> listaTeatros = dao.teatros();
+        request.setAttribute("teatros", listaTeatros);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/promocao/escolheTeatro.jsp");
+        dispatcher.forward(request, response);
+    }
+    
+    private void listaPorTeatro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String teatro = request.getParameter("teatro");  
+        List<Promocao> listaPromocoes = dao.getPromocaoByTeatro(teatro);
+        request.setAttribute("listaPromocoes", listaPromocoes);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/promocao/listaPorTeatro.jsp");
         dispatcher.forward(request, response);
     }
 }

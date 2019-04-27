@@ -15,7 +15,7 @@
         <a href="promocoes">Gerenciar promoções</a><br/>
         <a href="teatros/todos">Listar todos os teatros</a><br/>
         <a href="teatros/escolheCidade">Listar todos os teatros por cidade</a><br/>
-        <a href="promocoes/teatro">Listar todas as promoções de um teatro</a><br/>
+        <a href="promocoes/escolheTeatro">Listar todas as promoções de um teatro</a><br/>
         <a href="promocoes/escolheSite">Listar todas as promoções de um site</a><br/>
     </body>
 </html>
