@@ -21,15 +21,18 @@ O sistema possui um cadastro de promoções, com os seguintes dados: endereço/U
 ## Roteiro
 
 **SGBD**: JavaDB
+
 **Banco**: SiteVenda
+
 **Login**: root
+
 **Senha**: root
 
 Script para criar e popular tabelas: *criaçãoTabelas.sql*
 
 Instruções:
 
-1- Criar um banco de dados usando o *JavaDB* de nome *"SiteVenda"*.
-2- Configure o acesso do banco com o Login e Senha citados.
-3- Rode o script *"criaçãoTabelas.sql"*.
-4- Agora o banco está criado e populado.
+ 1. Criar um banco de dados usando o *JavaDB* de nome *"SiteVenda"*.
+ 2. Configure o acesso do banco com o Login e Senha citados.
+ 3. Rode o script *"criaçãoTabelas.sql"*.
+ 4. Agora o banco está criado e populado.
