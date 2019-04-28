@@ -5,18 +5,16 @@ public class Site {
     private String telefone;
     private String url;
     private String email;
-    private String senha;
 
     public Site(String url) {
         this.url = url;
     }
     
-    public Site(String nome, String telefone, String url, String email, String senha) {
+    public Site(String nome, String telefone, String url, String email) {
         this.nome = nome;
         this.telefone = telefone;
         this.url = url;
         this.email = email;
-        this.senha = senha;
     }
     
     public String getNome() {
@@ -48,14 +46,6 @@ public class Site {
     
     public void setEmail(String email) {
         this.email = email;
-    }
-    
-    public String getSenha() {
-        return senha;
-    }
-    
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 }
 

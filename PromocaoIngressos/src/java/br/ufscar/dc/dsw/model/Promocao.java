@@ -1,47 +1,24 @@
 package br.ufscar.dc.dsw.model;
-import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 public class Promocao {
-    @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE) @Column(name = "id", nullable = false)
-    private Integer id;
     private String url;
     private String cnpj;
-    private String nomePeca;
+    private String nomepeca;
     private Float preco;
-    private String dataHora;
+    private String datahora;
 
-    public Promocao(Integer id) {
-        this.id = id;
-    }
-    
-    public Promocao(Integer id, String url, String cnpj, String nomePeca, Float preco, String dataHora){
-        this.id = id;
+    public Promocao(String url, String cnpj, String datahora){
         this.url = url;
         this.cnpj = cnpj;
-        this.nomePeca = nomePeca;
-        this.preco = preco;
-        this.dataHora = dataHora;
+        this.datahora = datahora;
     }
     
-    public Promocao(String url, String cnpj, String nomePeca, Float preco, String dataHora){
+    public Promocao(String url, String cnpj, String nomepeca, Float preco, String datahora){
         this.url = url;
         this.cnpj = cnpj;
-        this.nomePeca = nomePeca;
+        this.nomepeca = nomepeca;
         this.preco = preco;
-        this.dataHora = dataHora;
-    }
-    
-    public Integer getId() {
-        return id;
-    }
-    
-    public void setId(Integer id) {
-        this.id = id;
+        this.datahora = datahora;
     }
     
     public String getUrl() {
@@ -61,11 +38,11 @@ public class Promocao {
     }
     
     public String getNomePeca() {
-        return nomePeca;
+        return nomepeca;
     }
     
-    public void setNomePeca(String nomePeca) {
-        this.nomePeca = nomePeca;
+    public void setNomePeca(String nomepeca) {
+        this.nomepeca = nomepeca;
     }
     
     public Float getPreco() {
@@ -77,10 +54,10 @@ public class Promocao {
     }
     
     public String getDataHora() {
-        return dataHora;
+        return datahora;
     }
     
-    public void setDataHora(String dataHora) {
-        this.dataHora = dataHora;
+    public void setDataHora(String datahora) {
+        this.datahora = datahora;
     }
 }

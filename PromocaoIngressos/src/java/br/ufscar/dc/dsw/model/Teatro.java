@@ -5,18 +5,16 @@ public class Teatro {
     private String cidade;
     private String cnpj;
     private String email;
-    private String senha;
 
     public Teatro(String cnpj) {
         this.cnpj = cnpj;
     }
     
-    public Teatro(String nome, String cidade, String cnpj, String email, String senha) {
+    public Teatro(String nome, String cidade, String cnpj, String email) {
         this.nome = nome;
         this.cidade = cidade;
         this.cnpj = cnpj;
         this.email = email;
-        this.senha = senha;
     }
     
     public String getNome() {
@@ -48,14 +46,6 @@ public class Teatro {
     
     public void setEmail(String email) {
         this.email = email;
-    }
-    
-    public String getSenha() {
-        return senha;
-    }
-    
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 }
 
