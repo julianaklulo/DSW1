@@ -29,7 +29,7 @@ url varchar(200) not null,
 cnpj varchar(19) not null,
 nomepeca varchar(150) not null,
 preco float not null,
-datahora date,
+datahora timestamp not null,
 
 CONSTRAINT Promocoes_PK PRIMARY KEY (url, cnpj, datahora),
 CONSTRAINT Promocoes_FK1 FOREIGN KEY (url) REFERENCES Sites(url),
