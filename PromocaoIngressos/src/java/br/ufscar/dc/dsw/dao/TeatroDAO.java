@@ -10,17 +10,16 @@ import java.util.List;
 
 public class TeatroDAO extends GenericDAO {
     public void insert(Teatro teatro) {
-        String sql = "INSERT INTO teatros (nome, cidade, cnpj, email, senha) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO teatros (nome, cidade, cnpj, email) VALUES (?, ?, ?, ?)";
         try {
             Connection conn = this.getConnection();
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, teatro.getNome());
-            statement.setString(2, teatro.getCidade());
-            statement.setString(3, teatro.getCnpj());
-            statement.setString(4, teatro.getEmail());
-            statement.setString(5, teatro.getSenha());
-            statement.executeUpdate();
-            statement.close();
+            PreparedStatement statementUsuario = conn.prepareStatement(sql);
+            statementUsuario.setString(1, teatro.getNome());
+            statementUsuario.setString(2, teatro.getCidade());
+            statementUsuario.setString(3, teatro.getCnpj());
+            statementUsuario.setString(4, teatro.getEmail());
+            statementUsuario.executeUpdate();
+            statementUsuario.close();
             conn.close();
         } catch (SQLException e) {
         throw new RuntimeException(e);
@@ -39,8 +38,7 @@ public class TeatroDAO extends GenericDAO {
                 String cidade = resultSet.getString("cidade");
                 String cnpj = resultSet.getString("cnpj");
                 String email = resultSet.getString("email");
-                String senha = resultSet.getString("senha");
-                Teatro teatro = new Teatro(nome, cidade, cnpj, email, senha);
+                Teatro teatro = new Teatro(nome, cidade, cnpj, email);
                 listaTeatros.add(teatro);
             }
             resultSet.close();
@@ -85,8 +83,7 @@ public class TeatroDAO extends GenericDAO {
                 String cidade = resultSet.getString("cidade");
                 String cnpj = resultSet.getString("cnpj");
                 String email = resultSet.getString("email");
-                String senha = resultSet.getString("senha");
-                Teatro teatro = new Teatro(nome, cidade, cnpj, email, senha);
+                Teatro teatro = new Teatro(nome, cidade, cnpj, email);
                 listaTeatrosCidade.add(teatro);
             }
             resultSet.close();
@@ -113,15 +110,13 @@ public class TeatroDAO extends GenericDAO {
     }
     
     public void update(Teatro teatro) {
-        String sql = "UPDATE teatros SET nome = ?, cidade = ?, email = ?, senha = ?";
+        String sql = "UPDATE teatros SET nome = ?, cidade = ?";
         sql += " WHERE cnpj = ?";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, teatro.getNome());
             statement.setString(2, teatro.getCidade());
-            statement.setString(3, teatro.getEmail());
-            statement.setString(4, teatro.getSenha());
             statement.setString(5, teatro.getCnpj());
             statement.executeUpdate();
             statement.close();
@@ -143,8 +138,7 @@ public class TeatroDAO extends GenericDAO {
                 String nome = resultSet.getString("nome");
                 String cidade = resultSet.getString("cidade");
                 String email = resultSet.getString("email");
-                String senha = resultSet.getString("senha");
-                teatro = new Teatro(nome, cidade, cnpj, email, senha);
+                teatro = new Teatro(nome, cidade, cnpj, email);
             }
             resultSet.close();
             statement.close();

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SiteDAO extends GenericDAO {
     public void insert(Site site) {
-        String sql = "INSERT INTO sites (nome, telefone, url, email, senha) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO sites (nome, telefone, url, email) VALUES (?, ?, ?, ?)";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -18,7 +18,6 @@ public class SiteDAO extends GenericDAO {
             statement.setString(2, site.getTelefone());
             statement.setString(3, site.getUrl());
             statement.setString(4, site.getEmail());
-            statement.setString(5, site.getSenha());
             statement.executeUpdate();
             statement.close();
             conn.close();
@@ -39,8 +38,7 @@ public class SiteDAO extends GenericDAO {
                 String telefone = resultSet.getString("telefone");
                 String url = resultSet.getString("url");
                 String email = resultSet.getString("email");
-                String senha = resultSet.getString("senha");
-                Site site = new Site(nome, telefone, url, email, senha);
+                Site site = new Site(nome, telefone, url, email);
                 listaSites.add(site);
             }
             resultSet.close();
@@ -67,15 +65,13 @@ public class SiteDAO extends GenericDAO {
     }
     
     public void update(Site site) {
-        String sql = "UPDATE sites SET nome = ?, telefone = ?, email = ?, senha = ?";
+        String sql = "UPDATE sites SET nome = ?, telefone = ?";
         sql += " WHERE url = ?";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, site.getNome());
             statement.setString(2, site.getTelefone());
-            statement.setString(3, site.getEmail());
-            statement.setString(4, site.getSenha());
             statement.setString(5, site.getUrl());
             statement.executeUpdate();
             statement.close();
@@ -97,8 +93,7 @@ public class SiteDAO extends GenericDAO {
                 String nome = resultSet.getString("nome");
                 String telefone = resultSet.getString("telefone");
                 String email = resultSet.getString("email");
-                String senha = resultSet.getString("senha");
-                site = new Site(nome, telefone, url, email, senha);
+                site = new Site(nome, telefone, url, email);
             }
             resultSet.close();
             statement.close();

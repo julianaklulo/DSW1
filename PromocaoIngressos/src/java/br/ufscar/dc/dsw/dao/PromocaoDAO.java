@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PromocaoDAO extends GenericDAO {
     public void insert(Promocao promocao) {
-        String sql = "INSERT INTO promocoes (url, cnpj, nome_peça, preco, data_hora) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO promocoes (url, cnpj, nomepeca, preco, datahora) VALUES (?, ?, ?, ?, ?)";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -34,13 +34,12 @@ public class PromocaoDAO extends GenericDAO {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-                Integer id = Integer.parseInt(resultSet.getString("id"));
                 String url = resultSet.getString("url");
                 String cnpj = resultSet.getString("cnpj");
-                String nomePeca = resultSet.getString("nome_peça");
+                String nomepeca = resultSet.getString("nomepeca");
                 Float preco = Float.parseFloat(resultSet.getString("preco"));
-                String dataHora = resultSet.getString("data_hora");
-                Promocao promocao = new Promocao(id, url, cnpj, nomePeca, preco, dataHora);
+                String datahora = resultSet.getString("datahora");
+                Promocao promocao = new Promocao(url, cnpj, nomepeca, preco, datahora);
                 listaPromocoes.add(promocao);
             }
             resultSet.close();
@@ -53,31 +52,32 @@ public class PromocaoDAO extends GenericDAO {
     }
         
     public void delete(Promocao promocao) {
-        String sql = "DELETE FROM promocoes where id = ?";
-        try {
-            Connection conn = this.getConnection();
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, Integer.toString(promocao.getId()));
-            statement.executeUpdate();
-            statement.close();
-            conn.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    
-    public void update(Promocao promocao) {
-        String sql = "UPDATE promocoes SET url = ?, cnpj = ?, nome_peça = ?, preco = ?, data_hora = ?";
-        sql += " WHERE id = ?";
+        String sql = "DELETE FROM promocoes where (url = ? and cnpj = ? and datahora = ?)";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, promocao.getUrl());
             statement.setString(2, promocao.getCnpj());
-            statement.setString(3, promocao.getNomePeca());
-            statement.setString(4, Float.toString(promocao.getPreco()));
+            statement.setString(3, promocao.getDataHora());
+            statement.executeUpdate();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+        
+    public void update(Promocao promocao) {
+        String sql = "UPDATE promocoes SET (nomepeca = ?, preco = ?";
+        sql += " WHERE (url = ? and cnpj = ? and datahora = ?)";
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, promocao.getNomePeca());
+            statement.setString(2, Float.toString(promocao.getPreco()));
+            statement.setString(3, promocao.getUrl());
+            statement.setString(4, promocao.getCnpj());
             statement.setString(5, promocao.getDataHora());
-            statement.setString(6, Integer.toString(promocao.getId()));
             statement.executeUpdate();
             statement.close();
             conn.close();
@@ -86,21 +86,20 @@ public class PromocaoDAO extends GenericDAO {
         }
     }
     
-    public Promocao get(Integer id) {
+    public Promocao get(String url, String cnpj, String datahora) {
         Promocao promocao = null;
-        String sql = "SELECT * FROM promocoes WHERE id = ?";
+        String sql = "SELECT * FROM promocoes WHERE (url = ? and cnpj = ? and datahora = ?)";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, Integer.toString(id));
+            statement.setString(1, url);
+            statement.setString(2, cnpj);
+            statement.setString(3, datahora);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                String url = resultSet.getString("url");
-                String cnpj = resultSet.getString("cnpj");
-                String nomePeca = resultSet.getString("nome_peça");
+                String nomepeca = resultSet.getString("nomepeca");
                 Float preco = Float.parseFloat(resultSet.getString("preco"));
-                String dataHora = resultSet.getString("data_hora");
-                promocao = new Promocao(id, url, cnpj, nomePeca, preco, dataHora);
+                promocao = new Promocao(url, cnpj, nomepeca, preco, datahora);
             }
             resultSet.close();
             statement.close();
@@ -120,13 +119,12 @@ public class PromocaoDAO extends GenericDAO {
             statement.setString(1, c);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) { 
-                Integer id = resultSet.getInt("id");
                 String url = resultSet.getString("url");
                 String cnpj = resultSet.getString("cnpj");
-                String nomePeca = resultSet.getString("nome_peça");
+                String nomepeca = resultSet.getString("nomepeca");
                 Float preco = resultSet.getFloat("preco");
-                String dataHora = resultSet.getString("data_hora");
-                Promocao promocao = new Promocao(id, url, cnpj, nomePeca, preco, dataHora);
+                String datahora = resultSet.getString("datahora");
+                Promocao promocao = new Promocao(url, cnpj, nomepeca, preco, datahora);
                 listaPromocoes.add(promocao);
             }
             resultSet.close();
@@ -187,13 +185,12 @@ public class PromocaoDAO extends GenericDAO {
             statement.setString(1, u);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Integer id = resultSet.getInt("id");
                 String url = resultSet.getString("url");
                 String cnpj = resultSet.getString("cnpj");
-                String nomePeca = resultSet.getString("nome_peça");
+                String nomepeca = resultSet.getString("nomepeca");
                 Float preco = resultSet.getFloat("preco");
-                String dataHora = resultSet.getString("data_hora");
-                Promocao promocao = new Promocao(id, url, cnpj, nomePeca, preco, dataHora);
+                String datahora = resultSet.getString("datahora");
+                Promocao promocao = new Promocao(url, cnpj, nomepeca, preco, datahora);
                 listaPromocoesSite.add(promocao);
             }
             resultSet.close();
@@ -214,13 +211,12 @@ public class PromocaoDAO extends GenericDAO {
             statement.setString(1, t);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Integer id = resultSet.getInt("id");
                 String url = resultSet.getString("url");
                 String cnpj = resultSet.getString("cnpj");
-                String nomePeca = resultSet.getString("nome_peça");
+                String nomepeca = resultSet.getString("nomepeca");
                 Float preco = resultSet.getFloat("preco");
-                String dataHora = resultSet.getString("data_hora");
-                Promocao promocao = new Promocao(id, url, cnpj, nomePeca, preco, dataHora);
+                String datahora = resultSet.getString("datahora");
+                Promocao promocao = new Promocao(url, cnpj, nomepeca, preco, datahora);
                 listaPromocoesTeatro.add(promocao);
             }
             resultSet.close();
