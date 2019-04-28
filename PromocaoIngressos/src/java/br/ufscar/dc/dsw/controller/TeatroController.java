@@ -1,5 +1,6 @@
 package br.ufscar.dc.dsw.controller;
 import br.ufscar.dc.dsw.model.Teatro;
+import br.ufscar.dc.dsw.model.Usuario;
 import br.ufscar.dc.dsw.dao.TeatroDAO;
 import java.io.IOException;
 import java.util.List;
@@ -86,7 +87,6 @@ public class TeatroController extends HttpServlet {
     
     private void listaPorCidade(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String cidade = request.getParameter("cidade");
-        System.out.println("Cidade: " + cidade);  
         List<Teatro> listaTeatros = dao.getTeatroByCidade(cidade);
         request.setAttribute("listaTeatros", listaTeatros);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/teatro/listaPorCidade.jsp");
@@ -108,24 +108,28 @@ public class TeatroController extends HttpServlet {
     
     private void insere(HttpServletRequest request, HttpServletResponse response) throws IOException{
         request.setCharacterEncoding("UTF-8");
+        String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
         String nome = request.getParameter("nome");
         String cidade = request.getParameter("cidade");
         String cnpj = request.getParameter("cnpj");
-        String email = request.getParameter("email");
-        String senha = request.getParameter("senha");
-        Teatro teatro = new Teatro(nome, cidade, cnpj, email, senha);
+        Usuario usuario = new Usuario(email, senha, "ROLE_TEATRO");
+        Teatro teatro = new Teatro(nome, cidade, cnpj, email);
+        dao.insertUsuario(usuario);
         dao.insert(teatro);
         response.sendRedirect("../teatros");
     }
     
     private void atualize(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
-        String nome = request.getParameter("nome");
-        String cidade = request.getParameter("cidade");
-        String cnpj = request.getParameter("cnpj");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        Teatro teatro = new Teatro(nome, cidade, cnpj, email, senha);
+        String cnpj = request.getParameter("cnpj");
+        String nome = request.getParameter("nome");
+        String cidade = request.getParameter("cidade");
+        Usuario usuario = new Usuario(email, senha, "ROLE_TEATRO");
+        Teatro teatro = new Teatro(nome, cidade, cnpj, email);
+        dao.updateUsuario(usuario);
         dao.update(teatro);
         response.sendRedirect("../teatros");
     }

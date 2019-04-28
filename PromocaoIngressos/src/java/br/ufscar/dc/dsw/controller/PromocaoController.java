@@ -78,8 +78,10 @@ public class PromocaoController extends HttpServlet {
     }
     
     private void apresentaFormEdicao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer id = Integer.parseInt(request.getParameter("id"));
-        Promocao promocao = dao.get(id);
+        String url = request.getParameter("url");
+        String cnpj = request.getParameter("cnpj");
+        String datahora = request.getParameter("datahora");
+        Promocao promocao = dao.get(url, cnpj, datahora);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/promocao/formulario.jsp");
         request.setAttribute("promocao", promocao);
         dispatcher.forward(request, response);
@@ -89,30 +91,31 @@ public class PromocaoController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String url = request.getParameter("url");
         String cnpj = request.getParameter("cnpj");
-        String nomePeca = request.getParameter("nomePeca");
+        String nomepeca = request.getParameter("nomepeca");
         Float preco = Float.parseFloat(request.getParameter("preco"));
-        String dataHora = request.getParameter("dataHora");
-        Promocao promocao = new Promocao(url, cnpj, nomePeca, preco, dataHora);
+        String datahora = request.getParameter("datahora");
+        Promocao promocao = new Promocao(url, cnpj, nomepeca, preco, datahora);
         dao.insert(promocao);
         response.sendRedirect("../promocoes");
     }
     
     private void atualize(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
-        Integer id = Integer.parseInt(request.getParameter("id"));
         String url = request.getParameter("url");
         String cnpj = request.getParameter("cnpj");
-        String nomePeca = request.getParameter("nomePeca");
+        String nomepeca = request.getParameter("nomepeca");
         Float preco = Float.parseFloat(request.getParameter("preco"));
-        String dataHora = request.getParameter("dataHora");
-        Promocao promocao = new Promocao(id, url, cnpj, nomePeca, preco, dataHora);
+        String datahora = request.getParameter("datahora");
+        Promocao promocao = new Promocao(url, cnpj, nomepeca, preco, datahora);
         dao.update(promocao);
         response.sendRedirect("../promocoes");
     }
     
     private void remove(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Integer id = Integer.parseInt(request.getParameter("id"));
-        Promocao promocao = new Promocao(id);
+        String url = request.getParameter("url");
+        String cnpj = request.getParameter("cnpj");
+        String datahora = request.getParameter("datahora");
+        Promocao promocao = new Promocao(url, cnpj, datahora);
         dao.delete(promocao);
         response.sendRedirect("../promocoes");
     }

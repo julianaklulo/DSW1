@@ -1,5 +1,6 @@
 package br.ufscar.dc.dsw.controller;
 import br.ufscar.dc.dsw.model.Site;
+import br.ufscar.dc.dsw.model.Usuario;
 import br.ufscar.dc.dsw.dao.SiteDAO;
 import java.io.IOException;
 import java.util.List;
@@ -80,7 +81,9 @@ public class SiteController extends HttpServlet {
         String url = request.getParameter("url");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        Site site = new Site(nome, telefone, url, email, senha);
+        Usuario usuario = new Usuario(email, senha, "ROLE_SITE");
+        Site site = new Site(nome, telefone, url, email);
+        dao.insertUsuario(usuario);
         dao.insert(site);
         response.sendRedirect("../sites");
     }
@@ -92,7 +95,9 @@ public class SiteController extends HttpServlet {
         String url = request.getParameter("url");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        Site site = new Site(nome, telefone, url, email, senha);
+        Usuario usuario = new Usuario(email, senha, "ROLE_SITE");
+        Site site = new Site(nome, telefone, url, email);
+        dao.updateUsuario(usuario);
         dao.update(site);
         response.sendRedirect("../sites");
     }
