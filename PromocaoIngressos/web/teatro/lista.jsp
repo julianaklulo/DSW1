@@ -19,7 +19,6 @@
                     <th>Nome</th>
                     <th>Cidade</th>
                     <th>Email</th>
-                    <th>Senha</th>
                     <th>Acões</th>
                 </tr>
                 <c:forEach var="teatro" items="${listaTeatros}">
@@ -28,7 +27,6 @@
                         <td><c:out value="${teatro.nome}" /></td>
                         <td><c:out value="${teatro.cidade}" /></td>
                         <td><c:out value="${teatro.email}" /></td> 
-                        <td><c:out value="${teatro.senha}" /></td>
                         <td>
                             <a href="teatros/edicao?cnpj=<c:out value='${teatro.cnpj}' />">Edição</a>
                             <a href="teatros/remocao?cnpj=<c:out value='${teatro.cnpj}' />"onclick="return confirm('Tem certeza de que deseja excluir este item?');">Remoção</a>

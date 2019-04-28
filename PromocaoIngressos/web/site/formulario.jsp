@@ -53,12 +53,14 @@
                         <input type="text" name="email" size="100" value="<c:out value='${site.email}' />"/>
                     </td>
                 </tr>
-                <tr>
-                    <th>Senha: </th>
-                    <td>
-                        <input type="text" name="senha" size="100" value="<c:out value='${site.senha}' />"/>
-                    </td>
-                </tr>
+                <c:if test="${site == null}">
+                    <tr>
+                        <th>Senha: </th>
+                        <td>
+                            <input type="text" name="senha" size="100" value="<c:out value='' />"/>
+                        </td>    
+                    </tr>
+                </c:if>
                 <tr>
                     <td colspan="2" align="center">
                         <input type="submit" value="Salvar" />

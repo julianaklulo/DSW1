@@ -19,7 +19,6 @@
                     <th>Nome</th>
                     <th>Telefone</th>
                     <th>Email</th>
-                    <th>Senha</th>
                     <th>Acões</th>
                 </tr>
                 <c:forEach var="site" items="${listaSites}">
@@ -28,7 +27,6 @@
                         <td><c:out value="${site.nome}" /></td>
                         <td><c:out value="${site.telefone}" /></td>
                         <td><c:out value="${site.email}" /></td> 
-                        <td><c:out value="${site.senha}" /></td>
                         <td>
                             <a href="sites/edicao?url=<c:out value='${site.url}' />">Edição</a>
                             <a href="sites/remocao?url=<c:out value='${site.url}' />"onclick="return confirm('Tem certeza de que deseja excluir este item?');">Remoção</a>
