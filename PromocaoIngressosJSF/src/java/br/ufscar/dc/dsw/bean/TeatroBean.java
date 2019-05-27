@@ -12,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 public class TeatroBean {
 
     private Teatro teatro;
+    private List<Teatro> teatros;
 
     public String lista() {
         return "teatro/index.xhtml";
@@ -21,6 +22,9 @@ public class TeatroBean {
         return "teatro/listaTodosTeatros.xhtml";
     }
 
+    public String listaPorCidade() {
+        return "teatro/listaTeatroPorCidade.xhtml";
+    }
     public String cadastra() {
         teatro = new Teatro();
         return "form.xhtml";
@@ -65,4 +69,5 @@ public class TeatroBean {
     public Teatro getTeatro() {
         return teatro;
     }
+    
 }
