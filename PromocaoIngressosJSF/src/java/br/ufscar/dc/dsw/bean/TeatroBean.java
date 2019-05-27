@@ -16,6 +16,10 @@ public class TeatroBean {
     public String lista() {
         return "teatro/index.xhtml";
     }
+    
+    public String listaTodos() {
+        return "teatro/listaTodosTeatros.xhtml";
+    }
 
     public String cadastra() {
         teatro = new Teatro();

@@ -4,12 +4,17 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Promoção de Ingressos</title>
+        <link rel="stylesheet" type="text/css" href="estilo.css" />
     </h:head>
     <h:body>
         <h:form>
-            <h:commandLink action="#{teatroBean.lista()}">Teatro: CRUD</h:commandLink><br/>
-            <h:commandLink action="#{siteBean.lista()}">Site: CRUD</h:commandLink><br/>
-            <h:commandLink action="#{promocaoBean.lista()}">Promoção: CRUD</h:commandLink><br/>
+            <h1>Promoção de Ingressos</h1>
+            <br/>
+                <p>Escolha o que deseja fazer:</p>
+            <h:commandLink action="#{siteBean.lista()}">Gerenciar sites de venda</h:commandLink><br/>
+            <h:commandLink action="#{teatroBean.lista()}">Gerenciar teatros</h:commandLink><br/>
+            <h:commandLink action="#{promocaoBean.lista()}">Gerenciar promoções</h:commandLink><br/>
+            <h:commandLink action="#{teatroBean.listaTodos()}">Listar todos os teatros</h:commandLink><br/>
         </h:form>
     </h:body> 
 </html>
