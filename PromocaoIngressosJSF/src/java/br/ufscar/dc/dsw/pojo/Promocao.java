@@ -20,19 +20,20 @@ public class Promocao implements Serializable{
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="url", nullable=false)
+    @JoinColumn(name="site", nullable=false)
     private Site site;
     
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="cnpj", nullable=false)
+    @JoinColumn(name="teatro", nullable=false)
     private Teatro teatro;
     
     String nomepeca;
     Float preco;
     
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date datahora;
+    @Temporal(TemporalType.DATE)
+    private Date data;
     
+    private String hora;
     
     public Long getId() {
         return id;
@@ -74,11 +75,19 @@ public class Promocao implements Serializable{
         this.preco = preco;
     }
     
-    public Date getDataHora() {
-        return datahora;
+    public Date getData() {
+        return data;
     }
     
-    public void setDataHora(Date datahora) {
-        this.datahora = datahora;
+    public void setData(Date data) {
+        this.data = data;
+    }
+    
+    public String getHora() {
+        return hora;
+    }
+    
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 }

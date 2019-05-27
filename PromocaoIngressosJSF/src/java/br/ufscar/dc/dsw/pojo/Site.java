@@ -57,4 +57,21 @@ public class Site implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (!(obj instanceof Site))
+		return false;
+	Site other = (Site) obj;
+	return other.nome.equals(this.nome);
+    }
+    
+    @Override
+    public String toString() {
+        return nome;
+    }
 }
