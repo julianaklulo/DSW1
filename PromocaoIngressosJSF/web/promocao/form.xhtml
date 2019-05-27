@@ -41,7 +41,7 @@
                 </div>  
                 <h:outputLabel for="nomepeca" class="control-label col-sm-4">Nome da Peça</h:outputLabel>  
                 <div class="col-sm-4">  
-                    <h:inputText id="nomepeca-id" value="#{promocaoBean.promocao.nomepeca}" class="form-control"   
+                    <h:inputText id="nomepeca-id" value="#{promocaoBean.promocao.nomePeca}" class="form-control"   
                                  validatorMessage="Nome da peça é obrigatório">
                         <f:validateRequired/>
                     </h:inputText>  
@@ -57,14 +57,27 @@
                 </div>  
             </div>  
             <div class="form-group">  
-                <h:outputLabel for="datahora" class="control-label col-sm-4">Data e Hora</h:outputLabel>  
+                <h:outputLabel for="data" class="control-label col-sm-4">Data</h:outputLabel>  
                 <div class="col-sm-4">  
-                    <h:inputText id="datahora-id" value="#{promocaoBean.promocao.dataHora}" class="form-control"   
-                                   validatorMessage="Data e hora é obrigatória">
+                    <h:inputText id="data-id" value="#{promocaoBean.promocao.data}" class="form-control"   
+                                   validatorMessage="Data é obrigatória">
+                        <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+                        <f:passThroughAttribute name="type" value="date"/>
                         <f:validateRequired/>
                     </h:inputText>
                 </div>  
             </div>
+            <div class="form-group">  
+                <h:outputLabel for="hora" class="control-label col-sm-4">Hora</h:outputLabel>  
+                <div class="col-sm-4">  
+                    <h:inputText id="hora-id" value="#{promocaoBean.promocao.hora}" class="form-control"   
+                                   validatorMessage="Hora é obrigatória">
+                    <f:passThroughAttribute name="type" value="time"/>
+                    <f:validateRequired/>
+                    </h:inputText>
+                </div>  
+            </div>
+            
             <div class="form-group">  
                 <div class="col-sm-4"></div>  
                 <div class="col-sm-4">  

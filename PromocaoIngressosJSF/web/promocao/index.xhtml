@@ -39,8 +39,12 @@
                     <h:outputText value="#{promocao.preco}"/>  
                 </h:column>
                 <h:column>  
-                    <f:facet name="header">Horário</f:facet>  
-                    <h:outputText value="#{promocao.dataHora}"/>  
+                    <f:facet name="header">Data</f:facet>  
+                    <h:outputText value="#{promocao.data}"/>  
+                </h:column>  
+                <h:column>  
+                    <f:facet name="header">Hora</f:facet>  
+                    <h:outputText value="#{promocao.hora}"/>  
                 </h:column>  
                 <h:column>  
                     <f:facet name="header"></f:facet>  
@@ -57,7 +61,7 @@
             </h:dataTable>
             <center>
                 <h:commandButton action = "#{promocaoBean.cadastra()}"   
-                                 value="Cadastre Novo Site" class="btn btn-primary"></h:commandButton>
+                                 value="Cadastre Nova Promoção" class="btn btn-primary"></h:commandButton>
             </center>
             <br/>
             <center>
