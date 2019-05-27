@@ -12,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 public class SiteBean {
 
     private Site site;
+    private List<Site> sites;
 
     public String lista() {
         return "site/index.xhtml";

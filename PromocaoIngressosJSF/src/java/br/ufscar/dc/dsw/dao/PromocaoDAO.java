@@ -64,11 +64,11 @@ public class PromocaoDAO extends GenericDAO<Promocao>{
         return q.getResultList();
     }
     
-    public List<Promocao> getAllBySite(String url) {
+    public List<Promocao> getAllBySite(Long id) {
         EntityManager em = this.getEntityManager();
-        String s = "select p from Promocao p where p.url = :u";
+        String s = "select p from Promocao p where p.site = :id";
         TypedQuery<Promocao> q = em.createQuery(s, Promocao.class);
-        q.setParameter("u", url);
+        q.setParameter("id", id);
         return q.getResultList();
     }
 }

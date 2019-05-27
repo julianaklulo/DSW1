@@ -12,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 public class PromocaoBean {
 
     private Promocao promocao;
+    private List<Promocao> promocoes;
 
     public String lista() {
         return "promocao/index.xhtml";
@@ -55,5 +56,17 @@ public class PromocaoBean {
 
     public Promocao getPromocao() {
         return promocao;
+    }
+    
+        public String getPromocoesByTeatro(Long id) throws SQLException {
+        PromocaoDAO dao = new PromocaoDAO();
+        promocoes = dao.getAllByTeatro(id);
+        return "promocao/listaPromocaoPorTeatro.xhtml";
+    }
+    
+    public String getPromocoesBySite(Long id) throws SQLException {
+        PromocaoDAO dao = new PromocaoDAO();
+        promocoes = dao.getAllBySite(id);
+        return "promocao/listaPromocaoPorSite.xhtml";
     }
 }
