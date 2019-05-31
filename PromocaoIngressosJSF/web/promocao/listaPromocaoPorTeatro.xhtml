@@ -16,11 +16,17 @@
             <center>  
                 <h2><h:outputText value="Lista de Promoções Por Teatro"/></h2>  
             </center>  
-            <div class="col-sm-4">
-                <h:selectOneMenu id="teatro" value="#">
-                </h:selectOneMenu>
-            </div>  
-            <h:dataTable value="#{promocaoBean.promocoes}" var="promocao"   
+                <div align="center">
+                    <br/>
+                    <h4><h:outputText value="Escolha o teatro:"/></h4>
+                        <h:selectOneMenu id="teatro" value="#{promocaoBean.teatro}">
+                        <f:selectItems value="#{teatroBean.teatros}"/>
+                        <f:converter converterId="TeatroConverter" />
+                        <f:ajax event="change" execute="#{teatro}" render="tabela-promocoes" />
+                    </h:selectOneMenu>
+                    <h:message for="teatro"/>
+                </div> 
+            <h:dataTable id="tabela-promocoes" value="#{promocaoBean.promocoes}" var="promocao"   
                          class="table table-striped table-hover table-bordered">  
                 
                 <h:column>  
