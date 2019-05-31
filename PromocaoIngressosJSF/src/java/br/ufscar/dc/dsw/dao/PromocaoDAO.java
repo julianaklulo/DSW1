@@ -66,7 +66,7 @@ public class PromocaoDAO extends GenericDAO<Promocao>{
     
     public List<Promocao> getAllBySite(Long id) {
         EntityManager em = this.getEntityManager();
-        String s = "select p from Promocao p where p.site = :id";
+        String s = "select p from Promocao p where p.site.id = :id";
         TypedQuery<Promocao> q = em.createQuery(s, Promocao.class);
         q.setParameter("id", id);
         return q.getResultList();

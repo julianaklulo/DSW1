@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"  
       xmlns:f="http://xmlns.jcp.org/jsf/core">  
     <h:head>  
-        <title>Lista de Promoções Por Teatro</title>
+        <title>Lista de Promoções Por Site</title>
         <link rel="stylesheet" 
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
               integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
@@ -16,11 +16,18 @@
             <center>  
                 <h2><h:outputText value="Lista de Promoções Por Site"/></h2>  
             </center>  
-            <div class="col-sm-4">
-                <h:selectOneMenu id="site" value="#">
-                </h:selectOneMenu>
-            </div>  
-            <h:dataTable value="#{promocaoBean.promocoes}" var="promocao"   
+                <div align="center">
+                    <br/>
+                    <h4><h:outputText value="Escolha o site:"/></h4>
+                    <h:selectOneMenu id="site" value="#{promocaoBean.site}" >
+                        <f:selectItems value="#{siteBean.sites}"/>
+                        <f:converter converterId="SiteConverter" />
+                        <f:ajax event="change" execute="#{site}" render="tabela-promocoes" />
+                    </h:selectOneMenu>
+                    <h:message for="site"/>
+                    <br/>
+                </div>  
+            <h:dataTable id="tabela-promocoes" value="#{promocaoBean.promocoes}" var="promocao"   
                          class="table table-striped table-hover table-bordered">  
                 
                 <h:column>  
