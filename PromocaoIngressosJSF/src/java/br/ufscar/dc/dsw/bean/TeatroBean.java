@@ -33,16 +33,15 @@ public class TeatroBean {
     }
     
     public String lista() {
+        cidade = null;
         return "teatro/index.xhtml";
     }
     
     public String listaTodos() {
+        cidade = null;
         return "teatro/listaTodosTeatros.xhtml";
     }
 
-    public String listaPorCidade() {
-        return "teatro/listaTeatroPorCidade.xhtml";
-    }
     public String cadastra() {
         teatro = new Teatro();
         return "form.xhtml";

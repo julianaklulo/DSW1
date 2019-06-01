@@ -89,7 +89,7 @@ public class PromocaoBean {
         } else if (teatro != null) {
             return dao.getAllByTeatro(teatro.getId());
         } else {
-        return dao.getAll();
+            return dao.getAll();
         }
     }
     
@@ -100,6 +100,6 @@ public class PromocaoBean {
     
     public String getPromocoesBySite() throws SQLException {
         teatro = null;
-        return "/promocao/listaPromocaoPorSite.xhtml?faces-redirect=true";
+        return "/promocao/listaPromocaoPorSite.xhtml";
     }
 }
