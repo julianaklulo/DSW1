@@ -3,21 +3,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Promoção de Ingressos</title>
+        <title>#{msg['root.index.title']}</title>
         <link rel="stylesheet" type="text/css" href="estilo.css" />
     </h:head>
     <h:body>
         <h:form>
-            <h1>Promoção de Ingressos</h1>
+            <h1>#{msg['root.index.title']}</h1>
             <br/>
-                <p>Escolha o que deseja fazer:</p>
-            <h:commandLink action="#{siteBean.lista()}">Gerenciar sites de venda</h:commandLink><br/>
-            <h:commandLink action="#{teatroBean.lista()}">Gerenciar teatros</h:commandLink><br/>
-            <h:commandLink action="#{promocaoBean.lista()}">Gerenciar promoções</h:commandLink><br/>
-            <h:commandLink action="#{teatroBean.listaTodos()}">Listar todos os teatros</h:commandLink><br/>
-            <h:commandLink action="#{teatroBean.listaPorCidade()}">Listar todos os teatros por cidade</h:commandLink><br/>
-            <h:commandLink action="#{promocaoBean.getPromocoesByTeatro()}">Listar todas as promoções de um teatro</h:commandLink><br/>
-            <h:commandLink action="#{promocaoBean.getPromocoesBySite()}">Listar todas as promoções de um site</h:commandLink><br/>
+                <p>#{msg['root.index.label']}</p>
+            <h:commandLink action="#{siteBean.lista()}">#{msg['root.index.manage.site']}</h:commandLink><br/>
+            <h:commandLink action="#{teatroBean.lista()}">#{msg['root.index.manage.teatro']}</h:commandLink><br/>
+            <h:commandLink action="#{promocaoBean.lista()}">#{msg['root.index.manage.promocao']}</h:commandLink><br/>
+            <h:commandLink action="#{teatroBean.listaTodos()}">#{msg['root.index.lista.teatros']}</h:commandLink><br/>
+            <h:commandLink action="#{teatroBean.listaPorCidade()}">#{msg['root.index.lista.teatros.cidade']}</h:commandLink><br/>
+            <h:commandLink action="#{promocaoBean.getPromocoesByTeatro()}">#{msg['root.index.lista.promocoes.teatro']}</h:commandLink><br/>
+            <h:commandLink action="#{promocaoBean.getPromocoesBySite()}">#{msg['root.index.lista.promocoes.site']}</h:commandLink><br/>
         </h:form>
     </h:body> 
 </html>

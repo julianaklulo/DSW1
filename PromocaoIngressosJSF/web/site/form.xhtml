@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">  
     <h:head>  
-        <title>Formulário: Site</title>
+        <title>#{msg['site.form.title']}</title>
         <link rel="stylesheet" 
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
               integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
@@ -16,42 +16,42 @@
             <div class="form-group">  
                 <div class="col-sm-4"></div>  
                 <div  class="col-sm-4">  
-                    <h2 style="text-align: center">Dados</h2>  
+                    <h2 style="text-align: center">#{msg['site.form.label']}</h2>  
                 </div>  
             </div>  
             <hr/>  
             <div class="form-group">  
-                <h:outputLabel for="nome" class="control-label col-sm-4">Nome</h:outputLabel>  
+                <h:outputLabel for="nome" class="control-label col-sm-4">#{msg['site.form.nome']}</h:outputLabel>  
                 <div class="col-sm-4">  
                     <h:inputText id="nome-id" value="#{siteBean.site.nome}" class="form-control"   
-                                 validatorMessage="Nome é obrigatório">
+                                 validatorMessage="#{msg['site.form.nome.required']}">
                         <f:validateRequired/>
                     </h:inputText>  
                 </div>  
             </div>  
             <div class="form-group">  
-                <h:outputLabel for="telefone" class="control-label col-sm-4">Telefone</h:outputLabel>  
+                <h:outputLabel for="telefone" class="control-label col-sm-4">#{msg['site.form.telefone']}</h:outputLabel>  
                 <div class="col-sm-4">  
                     <h:inputText id="telefone-id" value="#{siteBean.site.telefone}" class="form-control"   
-                                 validatorMessage="Telefone é obrigatório">
+                                 validatorMessage="#{msg['site.form.telefone.required']}">
                         <f:validateRequired/>
                     </h:inputText>  
                 </div>  
             </div>  
             <div class="form-group">  
-                <h:outputLabel for="url" class="control-label col-sm-4">URL</h:outputLabel>  
+                <h:outputLabel for="url" class="control-label col-sm-4">#{msg['site.form.url']}</h:outputLabel>  
                 <div class="col-sm-4">  
                     <h:inputText id="url-id" value="#{siteBean.site.url}" class="form-control"   
-                                   validatorMessage="URL é obrigatória">
+                                   validatorMessage="#{msg['site.form.url.required']}">
                         <f:validateRequired/>
                     </h:inputText>  
                 </div>  
             </div>
             <div class="form-group">  
-                <h:outputLabel for="email" class="control-label col-sm-4">Email</h:outputLabel>  
+                <h:outputLabel for="email" class="control-label col-sm-4">#{msg['site.form.email']}</h:outputLabel>  
                 <div class="col-sm-4">  
                     <h:inputText id="email-id" value="#{siteBean.site.email}" class="form-control"   
-                                 validatorMessage="Email é obrigatório">
+                                 validatorMessage="#{msg['site.form.email.required']}">
                         <f:validateRequired/>
                     </h:inputText>  
                 </div>  
@@ -60,12 +60,12 @@
                 <div class="col-sm-4"></div>  
                 <div class="col-sm-4">  
                     <div class="col-sm-2">                        
-                        <h:commandButton value="Salva" action="#{siteBean.salva()}" class="btn btn-primary"   
+                        <h:commandButton value="#{msg['site.form.button.salva']}" action="#{siteBean.salva()}" class="btn btn-primary"   
                                          style="width: 80px;"></h:commandButton>  
                     </div>  
                     <br/> 
                     <div class="col-sm-2">  
-                        <h:link outcome="index" value="Lista de Sites" class="btn btn-success" />  
+                        <h:link outcome="index" value="#{msg['site.form.button.volta']}" class="btn btn-success" />  
                     </div>  
                 </div>  
             </div>  

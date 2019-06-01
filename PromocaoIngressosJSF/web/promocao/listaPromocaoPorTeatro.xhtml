@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"  
       xmlns:f="http://xmlns.jcp.org/jsf/core">  
     <h:head>  
-        <title>Lista de Promoções Por Teatro</title>
+        <title>#{msg['promocao.lista.teatro.title']}</title>
         <link rel="stylesheet" 
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
               integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
@@ -14,54 +14,54 @@
     <h:body>  
         <h:form>  
             <center>  
-                <h2><h:outputText value="Lista de Promoções Por Teatro"/></h2>  
+                <h2><h:outputText value="#{msg['promocao.lista.teatro.label']}"/></h2>  
             </center>  
                 <div align="center">
                     <br/>
-                    <h4><h:outputText value="Escolha o teatro:"/></h4>
+                    <h4><h:outputText value="#{msg['promocao.lista.teatro.escolha']}"/></h4>
                         <h:selectOneMenu id="teatro" value="#{promocaoBean.teatro}">
                         <f:selectItems value="#{teatroBean.teatros}"/>
                         <f:converter converterId="TeatroConverter" />
                         <f:ajax event="change" execute="#{teatro}" render="tabela-promocoes" />
                     </h:selectOneMenu>
                     <h:message for="teatro"/>
+                    <br/>
                 </div> 
             <h:dataTable id="tabela-promocoes" value="#{promocaoBean.promocoes}" var="promocao"   
                          class="table table-striped table-hover table-bordered">  
-                
-                <h:column>  
-                    <f:facet name="header">ID</f:facet>  
+               <h:column>  
+                    <f:facet name="header">#{msg['promocao.table.id']}</f:facet>  
                     <h:outputText value="#{promocao.id}"/>  
                 </h:column>  
                 <h:column>  
-                    <f:facet name="header">Site</f:facet>  
+                    <f:facet name="header">#{msg['promocao.table.site']}</f:facet>  
                     <h:outputText value="#{promocao.site.nome}"/>  
                 </h:column>  
                 <h:column>  
-                    <f:facet name="header">Teatro</f:facet>  
+                    <f:facet name="header">#{msg['promocao.table.teatro']}</f:facet>  
                     <h:outputText value="#{promocao.teatro.nome}"/>  
                 </h:column>  
                 <h:column>  
-                    <f:facet name="header">Nome da Peça</f:facet>  
+                    <f:facet name="header">#{msg['promocao.table.nome']}</f:facet>  
                     <h:outputText value="#{promocao.nomePeca}"/>  
                 </h:column>  
                 <h:column>  
-                    <f:facet name="header">Preço</f:facet>  
+                    <f:facet name="header">#{msg['promocao.table.preco']}</f:facet>  
                     <h:outputText value="#{promocao.preco}"/>  
                 </h:column>
                 <h:column>  
-                    <f:facet name="header">Data</f:facet>  
+                    <f:facet name="header">#{msg['promocao.table.data']}</f:facet>  
                     <h:outputText value="#{promocao.data}"/>  
                 </h:column>  
                 <h:column>  
-                    <f:facet name="header">Hora</f:facet>  
+                    <f:facet name="header">#{msg['promocao.table.hora']}</f:facet>  
                     <h:outputText value="#{promocao.hora}"/>  
-                </h:column>  
+                </h:column>
             </h:dataTable>
             <br/>
             <center>
                 <h:commandButton action = "#{promocaoBean.volta()}"   
-                                 value="Menu Principal" class="btn btn-success"></h:commandButton>
+                                 value="#{msg['promocao.button.volta']}" class="btn btn-success"></h:commandButton>
             </center>
         </h:form>  
     </h:body>  

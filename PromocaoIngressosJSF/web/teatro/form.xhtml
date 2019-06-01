@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">  
     <h:head>  
-        <title>Formulário: Teatro</title>
+        <title>#{msg['teatro.form.title']}</title>
         <link rel="stylesheet" 
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
               integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
@@ -16,42 +16,42 @@
             <div class="form-group">  
                 <div class="col-sm-4"></div>  
                 <div  class="col-sm-4">  
-                    <h2 style="text-align: center">Dados</h2>  
+                    <h2 style="text-align: center">#{msg['teatro.form.label']}</h2>  
                 </div>  
             </div>  
             <hr/>  
             <div class="form-group">  
-                <h:outputLabel for="nome" class="control-label col-sm-4">Nome</h:outputLabel>  
+                <h:outputLabel for="nome" class="control-label col-sm-4">#{msg['teatro.form.nome']}</h:outputLabel>  
                 <div class="col-sm-4">  
                     <h:inputText id="nome-id" value="#{teatroBean.teatro.nome}" class="form-control"   
-                                 validatorMessage="Nome é obrigatório">
+                                 validatorMessage="#{msg['teatro.form.nome.required']}">
                         <f:validateRequired/>
                     </h:inputText>  
                 </div>  
             </div>  
             <div class="form-group">  
-                <h:outputLabel for="cidade" class="control-label col-sm-4">Cidade</h:outputLabel>  
+                <h:outputLabel for="cidade" class="control-label col-sm-4">#{msg['teatro.form.cidade']}</h:outputLabel>  
                 <div class="col-sm-4">  
                     <h:inputText id="cidade-id" value="#{teatroBean.teatro.cidade}" class="form-control"   
-                                 validatorMessage="Cidade é obrigatória">
+                                 validatorMessage="#{msg['teatro.form.cidade.required']}">
                         <f:validateRequired/>
                     </h:inputText>  
                 </div>  
             </div>  
             <div class="form-group">  
-                <h:outputLabel for="cnpj" class="control-label col-sm-4">CNPJ</h:outputLabel>  
+                <h:outputLabel for="cnpj" class="control-label col-sm-4">#{msg['teatro.form.cnpj']}</h:outputLabel>  
                 <div class="col-sm-4">  
                     <h:inputText id="cnpj-id" value="#{teatroBean.teatro.cnpj}" class="form-control"   
-                                   validatorMessage="CNPJ é obrigatório">
+                                   validatorMessage="#{msg['teatro.form.cnpj.required']}">
                         <f:validateRequired/>
                     </h:inputText>  
                 </div>  
             </div>
             <div class="form-group">  
-                <h:outputLabel for="email" class="control-label col-sm-4">Email</h:outputLabel>  
+                <h:outputLabel for="email" class="control-label col-sm-4">#{msg['teatro.form.email']}</h:outputLabel>  
                 <div class="col-sm-4">  
                     <h:inputText id="email-id" value="#{teatroBean.teatro.email}" class="form-control"   
-                                 validatorMessage="Email é obrigatório">
+                                 validatorMessage="#{msg['teatro.form.email.required']}">
                         <f:validateRequired/>
                     </h:inputText>  
                 </div>  
@@ -60,12 +60,12 @@
                 <div class="col-sm-4"></div>  
                 <div class="col-sm-4">  
                     <div class="col-sm-2">                        
-                        <h:commandButton value="Salva" action="#{teatroBean.salva()}" class="btn btn-primary"   
+                        <h:commandButton value="#{msg['teatro.form.button.salva']}" action="#{teatroBean.salva()}" class="btn btn-primary"   
                                          style="width: 80px;"></h:commandButton>  
                     </div>  
                     <br/> 
                     <div class="col-sm-2">  
-                        <h:link outcome="index" value="Lista de Teatros" class="btn btn-success" />  
+                        <h:link outcome="index" value="#{msg['teatro.form.button.volta']}" class="btn btn-success" />  
                     </div>  
                 </div>  
             </div>  
