@@ -10,10 +10,28 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class TeatroBean {
-
     private Teatro teatro;
     private List<Teatro> teatros;
+    private List<Teatro> teatrosByCidade;
+    private List<String> cidades;
+    private String cidade;
 
+    public Teatro getTeatro() {
+        return teatro;
+    }
+
+    public void setTeatro(Teatro teatro) {
+        this.teatro = teatro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+    
     public String lista() {
         return "teatro/index.xhtml";
     }
@@ -58,16 +76,19 @@ public class TeatroBean {
 
     public List<Teatro> getTeatros() throws SQLException {
         TeatroDAO dao = new TeatroDAO();
-        return dao.getAll();
-    }
-    
-    public List<Teatro> getTeatrosByCidade(String cidade) throws SQLException {
-            TeatroDAO dao = new TeatroDAO();
+        if (cidade != null) {
             return dao.getAllByCidade(cidade);
-    }
-
-    public Teatro getTeatro() {
-        return teatro;
+        } else {
+            return dao.getAll();
+        }
     }
     
+    public List<String> getCidades() throws SQLException {
+        TeatroDAO dao = new TeatroDAO();
+        return dao.getCidades();
+    }
+    
+    public String getTeatrosByCidade() throws SQLException {
+        return "teatro/listaTeatroPorCidade.xhtml";
+    }
 }

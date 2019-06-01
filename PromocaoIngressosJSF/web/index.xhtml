@@ -15,7 +15,7 @@
             <h:commandLink action="#{teatroBean.lista()}">#{msg['root.index.manage.teatro']}</h:commandLink><br/>
             <h:commandLink action="#{promocaoBean.lista()}">#{msg['root.index.manage.promocao']}</h:commandLink><br/>
             <h:commandLink action="#{teatroBean.listaTodos()}">#{msg['root.index.lista.teatros']}</h:commandLink><br/>
-            <h:commandLink action="#{teatroBean.listaPorCidade()}">#{msg['root.index.lista.teatros.cidade']}</h:commandLink><br/>
+            <h:commandLink action="#{teatroBean.getTeatrosByCidade()}">#{msg['root.index.lista.teatros.cidade']}</h:commandLink><br/>
             <h:commandLink action="#{promocaoBean.getPromocoesByTeatro()}">#{msg['root.index.lista.promocoes.teatro']}</h:commandLink><br/>
             <h:commandLink action="#{promocaoBean.getPromocoesBySite()}">#{msg['root.index.lista.promocoes.site']}</h:commandLink><br/>
         </h:form>

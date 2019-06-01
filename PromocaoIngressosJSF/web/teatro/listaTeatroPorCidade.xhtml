@@ -16,11 +16,17 @@
             <center>  
                 <h2><h:outputText value="#{msg['teatro.index.label']}"/></h2>  
             </center>
-            <div class="col-sm-4">
-                <h:selectOneMenu id="cidade" value="#">
+            <div align="center">
+                <br/>
+                <h4><h:outputText value="#{msg['teatro.lista.cidade.escolha']}"/></h4>
+                    <h:selectOneMenu id="teatro" value="#{teatroBean.cidade}" >
+                    <f:selectItems value="#{teatroBean.cidades}"/>
+                    <f:ajax event="change" execute="#{teatro}" render="tabela-teatros" />
                 </h:selectOneMenu>
-            </div>
-            <h:dataTable value="#{teatroBean.teatros}" var="teatro"   
+                <h:message for="teatro"/>
+                <br/>
+            </div>  
+            <h:dataTable id="tabela-teatros" value="#{teatroBean.teatros}" var="teatro"   
                          class="table table-striped table-hover table-bordered">  
                 <h:column>  
                     <f:facet name="header">#{msg['teatro.table.id']}</f:facet>  
