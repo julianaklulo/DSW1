@@ -1,0 +1,7 @@
+import br.ufscar.dc.dsw.Promocao
+
+model {
+	Promocao promocao
+}
+
+json tmpl.promocao(promocao)

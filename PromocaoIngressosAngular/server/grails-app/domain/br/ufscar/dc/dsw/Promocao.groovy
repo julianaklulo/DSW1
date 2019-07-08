@@ -4,7 +4,7 @@ import grails.rest.*
 import br.ufscar.dc.dsw.Teatro
 import br.ufscar.dc.dsw.Site
 
-@Resource(readOnly = false, formats = ['json', 'xml'])
+@Resource(uri='/promocoes', readOnly = false, formats = ['json', 'xml'])
 class Promocao {
     static constraints = {
         nomePeca blank: false

@@ -1,0 +1,8 @@
+import br.ufscar.dc.dsw.Promocao
+
+model {
+	Iterable<Promocao> promocaoList
+}
+
+json tmpl.promocao(promocaoList ?: [])
+
