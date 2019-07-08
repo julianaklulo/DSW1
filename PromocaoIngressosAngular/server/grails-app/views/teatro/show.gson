@@ -1,0 +1,7 @@
+import br.ufscar.dc.dsw.Teatro
+
+model {
+	Teatro teatro
+}
+
+json tmpl.teatro(teatro)

@@ -1,0 +1,8 @@
+import br.ufscar.dc.dsw.Teatro
+
+model {
+	Iterable<Teatro> teatroList
+}
+
+json tmpl.teatro(teatroList ?: [])
+

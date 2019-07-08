@@ -12,6 +12,7 @@ class UrlMappings {
 
         "/"(controller: 'application', action:'index')
         "/sites"(resources:"site")
+        "/teatros"(resources:"teatro")
         "500"(view: '/error')
         "404"(view: '/notFound')
     }
