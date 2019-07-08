@@ -1,0 +1,14 @@
+example-card{
+    margin: 0 auto;
+    width: 40%;
+}
+
+.mat-card-actions{
+    margin: 0 auto;
+    width: 20%;
+}
+
+.login-box{
+    margin: auto;
+    margin-top: 0%;
+}
