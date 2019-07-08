@@ -1,0 +1,7 @@
+import br.ufscar.dc.dsw.Site
+
+model {
+	Site site
+}
+
+json tmpl.site(site)

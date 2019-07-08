@@ -1,0 +1,8 @@
+import br.ufscar.dc.dsw.Site
+
+model {
+	Iterable<Site> siteList
+}
+
+json tmpl.site(siteList ?: [])
+
