@@ -24,7 +24,7 @@ class BootStrap {
         s.save()
         UserRole.create(s, site_role, true)
 
-        Promocao p = new Promocao(nomePeca: 'Hamlet', preco: '50', dataHora: new Date(), teatro: t, site: s)
+        Promocao p = new Promocao(nomePeca: 'Hamlet', preco: '50', dataHora: "1/1/1", teatro: t, site: s)
         p.save()
 }
     def destroy = {

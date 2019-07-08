@@ -15,8 +15,8 @@ class Promocao {
     }
 
     String nomePeca
-    float preco
-    Date dataHora
+    String preco
+    String dataHora
     Teatro teatro
     Site site
 }
