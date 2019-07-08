@@ -10,11 +10,15 @@ json {
     preco promocao.preco
     datahora promocao.dataHora
 		teatro {
-			id promocao.teatro.id
+			teatro_id promocao.teatro.id
 			nome promocao.teatro.nome
+			cidade promocao.teatro.cidade
+			cnpj promocao.teatro.cnpj
 		}
 		site {
-			id promocao.site.id
+			site_id promocao.site.id
+			nome promocao.site.nome
+			telefone promocao.site.telefone
 			url promocao.site.url
 		}
 }
