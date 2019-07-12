@@ -1,1 +1,37 @@
-<p>teatro-edicao works!</p>
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" (click)="teatroDetalhes()"><mat-icon>info</mat-icon></a>
+  </div>
+  <mat-card class="example-card">
+    <form [formGroup]="teatroForm" (ngSubmit)="onFormSubmit(teatroForm.value)">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Nome" formControlName="nome"
+               [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!teatroForm.get('nome').valid && teatroForm.get('nome').touched">Por favor entre com o Nome</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="CNPJ" formControlName="cnpj"
+               [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!teatroForm.get('cnpj').valid && teatroForm.get('cnpj').touched">Por favor entre com o CNPJ</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Cidade" formControlName="cidade"
+               [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!teatroForm.get('cidade').valid && teatroForm.get('cidade').touched">Por favor entre com a Cidade</span>
+        </mat-error>
+      </mat-form-field>
+     <div class="button-row">
+        <button type="submit" [disabled]="!teatroForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+      </div>
+    </form>
+  </mat-card>
+</div>

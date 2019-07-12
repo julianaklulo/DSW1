@@ -17,12 +17,11 @@ export class TeatrosComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-  }
+    }
 
   async getData() {
     this.teatros = await this.api.getTeatros().toPromise();
     this.isLoadingResults = false;
     console.debug('No issues, I will wait until promise is resolved..');
   }
-
 }
